@@ -2948,6 +2948,26 @@ end)
 local MiscFarm = Tabs.Main:AddSection("Farm Khác")
 
 if Third_Sea then
+local ToggleRandomBone = Tabs.Main:AddToggle("ToggleRandomBone", {Title = "Đổi xương",Description = "", Default = false })
+ToggleRandomBone:OnChanged(function(Value)  
+		_G.AutoRandomBone = Value
+end)
+Options.ToggleRandomBone:SetValue(false)
+	
+spawn(function()
+	while wait(0.0000000000000000000001) do
+	if _G.AutoRandomBone then
+	local args = {
+	 [1] = "Bones",
+	 [2] = "Buy",
+	 [3] = 1,
+	 [4] = 1
+	}
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+	end
+	end
+	end)
+	
 local ToggleBone = Tabs.Main:AddToggle("ToggleBone", {
     Title = "Cày Xương",
     Description = "", 
@@ -4131,8 +4151,21 @@ end
 
 local Items = Tabs.Concac:AddSection("Tab Item")
 
+if First_Sea then
+Tabs.Concac:AddParagraph({
+        Title = "Sea 3",
+        Content = ""
+    })
+
+if Second_Sea then
+Tabs.Concac:AddParagraph({
+        Title = "Sea 3",
+        Content = ""
+    })
+
+if Third_Sea then
 local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
-        Title = "Đánh Hải Tặc ở Pháo Đài",
+        Title = "Đánh Hải ",
         Description = "", 
         Default = false })
     ToggleCastleRaid:OnChanged(function(Value)
@@ -6061,25 +6094,6 @@ while wait() do
 end
 end)
 
-local ToggleRandomBone = Tabs.Shop:AddToggle("ToggleRandomBone", {Title = "Đổi xương",Description = "", Default = false })
-ToggleRandomBone:OnChanged(function(Value)  
-		_G.AutoRandomBone = Value
-end)
-Options.ToggleRandomBone:SetValue(false)
-	
-spawn(function()
-	while wait(0.0000000000000000000001) do
-	if _G.AutoRandomBone then
-	local args = {
-	 [1] = "Bones",
-	 [2] = "Buy",
-	 [3] = 1,
-	 [4] = 1
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end
-	end
-	end)
 
 
 Tabs.Shop:AddButton({
