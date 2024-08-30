@@ -13,7 +13,6 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Cc3m = Window:AddTab({ Title = "Discod", Icon = "" }),
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    Duma = Window:AddTab({ Title = "item", Icon = "" }),
     Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
     Player = Window:AddTab({ Title = "Player", Icon = "" }),
     Teleport = Window:AddTab({ Title = "Island", Icon = "" }),
