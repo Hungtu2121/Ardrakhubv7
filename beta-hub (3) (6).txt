@@ -4151,18 +4151,6 @@ end
 
 local Items = Tabs.Concac:AddSection("Tab Item")
 
-if First_Sea then
-Tabs.Concac:AddParagraph({
-        Title = "Sea 3",
-        Content = ""
-    })
-
-if Second_Sea then
-Tabs.Concac:AddParagraph({
-        Title = "Sea 3",
-        Content = ""
-    })
-
 if Third_Sea then
 local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
         Title = "Đánh Hải ",
