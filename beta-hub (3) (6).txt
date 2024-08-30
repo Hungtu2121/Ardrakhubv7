@@ -4151,9 +4151,8 @@ end
 
 local Items = Tabs.Concac:AddSection("Tab Item")
 
-if Third_Sea then
 local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
-        Title = "Đánh Hải ",
+        Title = "Đánh Hải cặc",
         Description = "", 
         Default = false })
     ToggleCastleRaid:OnChanged(function(Value)
