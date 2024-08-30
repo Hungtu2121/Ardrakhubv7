@@ -2701,182 +2701,13 @@ local Main = Tabs.Main:AddSection("Tab Farm ")
         end
         end
       end)
+      
+      local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
 
-
-    local ToggleCastleRaid = Tabs.Main:AddToggle("ToggleCastleRaid", {
-        Title = "Đánh Hải Tặc ở Pháo Đài",
-        Description = "", 
-        Default = false })
-    ToggleCastleRaid:OnChanged(function(Value)
-        _G.CastleRaid = Value
+    Toggle:OnChanged(function(Value)
+        RedeemCode = Value
     end)
-    Options.ToggleCastleRaid:SetValue(false)
-    spawn(function()
-        while wait() do
-            if _G.CastleRaid then
-                pcall(function()
-                    local CFrameCastleRaid = CFrame.new(-5496.17432, 313.768921, -2841.53027, 0.924894512, 7.37058015e-09, 0.380223751, 3.5881019e-08, 1, -1.06665446e-07, -0.380223751, 1.12297109e-07, 0.924894512)
-                    if (CFrame.new(-5539.3115234375, 313.800537109375, -2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if _G.CastleRaid and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                                if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000 then
-                                    repeat wait(_G.Fast_Delay)
-                                        AttackNoCoolDown()
-                                        AutoHaki()
-                                        EquipTool(SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-                                    until v.Humanoid.Health <= 0 or not v.Parent or not _G.CastleRaid
-                                end
-                            end
-                        end
-                    else
-                        toTarget(CFrameCastleRaid)
-                     
-                      
-                    end
-                end)
-            end
-        end
-        end)
-
-game:GetService('RunService').RenderStepped:connect(function()           
-    if _G.chestsea3 then
-   if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") then 
-  _G.chestsea3 = false                      
-   elseif not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") then 
-     if game:GetService("Workspace"):FindFirstChild("Chest1") then
-    TPchest( game:GetService("Workspace"):FindFirstChild("Chest1").CFrame)
-    end
-    if game:GetService("Workspace"):FindFirstChild("Chest2") then
-    TPchest( game:GetService("Workspace"):FindFirstChild("Chest2").CFrame)
-    end
-    if game:GetService("Workspace"):FindFirstChild("Chest3") then
-TPchest( game:GetService("Workspace"):FindFirstChild("Chest3").CFrame)
-end
-end
-end
-end)
-if game.PlaceId == 7449423635 then
-spawn(function()
-   while task.wait(3.5) do
-       pcall(function()
-       if not   game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") then
-           if _G.chestsea3 then
-               game:GetService("VirtualInputManager"):SendKeyEvent(true,"Q",false,game)
-           game.Players.LocalPlayer.Character.Humanoid.Health = 0
-           end
-           wait(5)
-          end 
-        end)
-     end
-     end) 
-    end
-game:GetService('RunService').RenderStepped:connect(function()           
-    if _G.chestsea2 then
-   if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") then 
-       game:GetService("VirtualInputManager"):SendKeyEvent(true,"Q",false,game)
-  _G.chestsea2 = false                         
-   elseif not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") then 
-     if game:GetService("Workspace"):FindFirstChild("Chest1") then
-    TPchest( game:GetService("Workspace"):FindFirstChild("Chest1").CFrame)
-    end
-    if game:GetService("Workspace"):FindFirstChild("Chest2") then
-    TPchest( game:GetService("Workspace"):FindFirstChild("Chest2").CFrame)
-    end
-    if game:GetService("Workspace"):FindFirstChild("Chest3") then
-TPchest( game:GetService("Workspace"):FindFirstChild("Chest3").CFrame)
-end
-end
-end
-end)
-if game.PlaceId == 4442272183 then 
-spawn(function()
-   while task.wait(3.5) do
-       pcall(function()
-       if not   game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") then
-           if _G.chestsea2 then
-           game.Players.LocalPlayer.Character.Humanoid.Health = 0
-           end
-           wait(5)
-          end 
-        end) 
-    end 
-end) 
-end
-           
-function TPchest(P1)          
-            local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-              if Distance >= 0 then
-                Speed = 1200000
-                end
-                local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1  }) tween:Play()                                    
-             end
-
-
-if Third_Sea then
-local ToggleChest = Tabs.Main:AddToggle("ToggleChest", {
-    Title = "Nhặt Rương dừng Khi Có Vật Phẩm [Dịch Chuyển]",
-    Description = "", 
-    Default = false })
-ToggleChest:OnChanged(function(Value)
-    _G.chestsea3 = Value
-end)
-Options.ToggleChest:SetValue(false)
-end
-
-if Second_Sea then
-local ToggleChest = Tabs.Main:AddToggle("ToggleChest", {
-    Title = "Nhặt Rương dừng Khi Có Vật Phẩm [Dịch Chuyển]",
-    Description = "", 
-    Default = false })
-ToggleChest:OnChanged(function(Value)
-    _G.chestsea2 = Value
-end)
-Options.ToggleChest:SetValue(false)
-end
-
-local ToggleChestTween = Tabs.Main:AddToggle("ToggleChestTween", {
-    Title = "Nhặt Rương [Bay]",
-    Description = "", 
-    Default = false })
-ToggleChestTween:OnChanged(function(Value)
-    AutoFarmChest = Value
-end)
-Options.ToggleChestTween:SetValue(false)
-_G.MagnitudeAdd = 0
-spawn(function()
-	while wait() do 
-		if AutoFarmChest then
-			for i,v in pairs(game:GetService("Workspace"):GetChildren()) do 
-				if v.Name:find("Chest") then
-					if game:GetService("Workspace"):FindFirstChild(v.Name) then
-						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000+_G.MagnitudeAdd then
-							repeat wait()
-								if game:GetService("Workspace"):FindFirstChild(v.Name) then
-									Tween(v.CFrame)
-								end
-							until AutoFarmChest == false or not v.Parent
-							Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-							_G.MagnitudeAdd = _G.MagnitudeAdd+1500
-							break
-						end
-					end
-				end
-			end
-		end
-	end
-end)
-
-      Tabs.Main:AddButton({
-        Title = "Nhập Hết Code",
-        Description = "",
-        Callback = function()
-            RedeemCode()
-        end
-    })
-
+     
     function RedeemCode(Code)
 		game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Code)
 	end
@@ -2933,7 +2764,7 @@ end)
 
 local Mastery = Tabs.Main:AddSection("Mastery Farm")
     local DropdownMastery = Tabs.Main:AddDropdown("DropdownMastery", {
-        Title = "Chọn Chế Độ Cày Thông Thạo",
+        Title = "Select Mastery",
         Description = "",
         Values = {"Level","Near Mobs",},
         Multi = false,
@@ -2947,7 +2778,7 @@ local Mastery = Tabs.Main:AddSection("Mastery Farm")
     end)
 
     local ToggleMasteryFruit = Tabs.Main:AddToggle("ToggleMasteryFruit", {
-        Title = "Cày Thông Thạo Trái Ác Quỷ",
+        Title = "Farm Mastery",
         Description = "", 
         Default = false })
     ToggleMasteryFruit:OnChanged(function(Value)
@@ -2958,7 +2789,7 @@ local Mastery = Tabs.Main:AddSection("Mastery Farm")
  
 
     local SliderHealt = Tabs.Main:AddSlider("SliderHealt", {
-        Title = "Phần Trăm Máu Quái",
+        Title = "Blood Monster",
         Description = "",
         Default = 25,
         Min = 0,
