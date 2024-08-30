@@ -2046,7 +2046,7 @@ end
     local Distance = (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
         .Magnitude
     if Distance < 1000 then
-        Speed = 800
+        Speed = 620
     elseif Distance >= 1000 then
         Speed = 320
     end
@@ -4151,6 +4151,18 @@ end
 
 local Items = Tabs.Concac:AddSection("Tab Item")
 
+if First_Sea then
+Tabs.Main:AddParagraph({
+        Title = "Sea 3",
+        Content = ""
+    })
+    
+if Second_Sea then
+Tabs.Main:AddParagraph({
+        Title = "Sea 3",
+        Content = ""
+    })
+
 if Third_Sea then
 local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
         Title = "Farm Pirates",
@@ -4191,7 +4203,7 @@ local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
         end)
 
 
-    local ToggleHallow = Tabs.Concac:AddToggle("ToggleHallow", {Title = "Cày Lưỡi Hái Bóng Tối ( Từ A - Z )",Description = "", Default = false })
+    local ToggleHallow = Tabs.Concac:AddToggle("ToggleHallow", {Title = "Cày Lưỡi Hái Bóng Tối",Description = "", Default = false })
 
     ToggleHallow:OnChanged(function(Value)
         AutoHallowSycthe = Value
