@@ -5,7 +5,7 @@ local Window = Fluent:CreateWindow({
     Title = "Thuận dragon",
     SubTitle = "Beta Version",
     TabWidth = 160,
-    Size = UDim2.fromOffset(530, 350),
+    Size = UDim2.fromOffset(530, 290),
     Acrylic = true,
     Theme = "Darker",
     MinimizeKey = Enum.KeyCode.End
@@ -1958,7 +1958,7 @@ end
   function Tween2(P1)
     local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance >= 1 then
-    Speed = 530
+    Speed = 420
     end
     game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear), {
       CFrame = P1
@@ -2468,7 +2468,7 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn
 end
 
 local Farming = Tabs.Main:AddSection("Farming")
-local listfastattack = {'Normal Attack','Fast Attack','Mera.Pro'}
+local listfastattack = {'Normal Attack','Fast Attack','Mera Pro'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
         Title = "Chọn Tốc Độ Đánh",
@@ -2484,7 +2484,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Mera.Pro'}
 		_G.Fast_Delay = 0.12
 	elseif _G.FastAttackZueszYTB_Mode == "Normal Attack" then
 		_G.Fast_Delay = 0.2
-	elseif _G.FastAttackZueszYTB_Mode == "Super Fast Attack" then
+	elseif _G.FastAttackZueszYTB_Mode == "Mera Pro" then
 		_G.Fast_Delay = 0.0
 	end
 end)
