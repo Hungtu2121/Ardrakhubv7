@@ -3,9 +3,9 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
     Title = "<font color='rgb(255,0,255)'>Mera  </font> <font color='rgb(255,255,255)'>Hub  </font>",
-    SubTitle = "<font color='rgb(255,255,0)'>Tứ Béo  </font",
+    SubTitle = "<font color='rgb(255,255,0)'>Tứ Béo  </font>",
     TabWidth = 160,
-    Size = UDim2.fromOffset(530, 280),
+    Size = UDim2.fromOffset(530, 380),
     Acrylic = true,
     Theme = "Darker",
     MinimizeKey = Enum.KeyCode.F15
@@ -1958,7 +1958,7 @@ end
   function Tween2(P1)
     local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance >= 1 then
-    Speed = 450
+    Speed = 360
     end
     game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear), {
       CFrame = P1
@@ -2047,7 +2047,7 @@ end
     if Distance < 1000 then
         Speed = 800
     elseif Distance >= 1000 then
-        Speed = 800
+        Speed = 430
     end
     if BypassTP then
         if Distance > 3000 and not AutoNextIsland and not (game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice")) and not (Name == "Fishman Commando" or Name == "Fishman Warrior") then
@@ -2462,7 +2462,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Mera Pro'}
 	elseif _G.FastAttackZueszYTB_Mode == "Normal Attack" then
 		_G.Fast_Delay = 0.2
 	elseif _G.FastAttackZueszYTB_Mode == "Mera Pro" then
-		_G.Fast_Delay = 0.100
+		_G.Fast_Delay = 0.1
 	end
 end)
 
