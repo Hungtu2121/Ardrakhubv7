@@ -13,6 +13,7 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
     Concac = Window:AddTab({ Title = "item", Icon = "" }),
+    Sea = Window:AddTab({ Title = "Sea Event", Icon = "" }),
     Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
     Player = Window:AddTab({ Title = "Player", Icon = "" }),
     Teleport = Window:AddTab({ Title = "Island", Icon = "" }),
@@ -4112,7 +4113,7 @@ end)
 
  Options.ToggleMirage:SetValue(false)
 
- local AutoW = Tabs.Main:AddToggle("AutoW", {Title = "Nhấn Phím W",Description = "", Default = false })
+ local AutoW = Tabs.Main:AddToggle("AutoW", {Title = "Press the keyW",Description = "", Default = false })
  AutoW:OnChanged(function(Value)
     _G.AutoW = Value
      end)
@@ -4128,10 +4129,48 @@ end)
     end)
 end
 
-local Items = Tabs.Main:AddSection("Items Farm")
+local Items = Tabs.Concac:AddSection("Tab Item")
+
+local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
+        Title = "Đánh Hải Tặc ở Pháo Đài",
+        Description = "", 
+        Default = false })
+    ToggleCastleRaid:OnChanged(function(Value)
+        _G.CastleRaid = Value
+    end)
+    Options.ToggleCastleRaid:SetValue(false)
+    spawn(function()
+        while wait() do
+            if _G.CastleRaid then
+                pcall(function()
+                    local CFrameCastleRaid = CFrame.new(-5496.17432, 313.768921, -2841.53027, 0.924894512, 7.37058015e-09, 0.380223751, 3.5881019e-08, 1, -1.06665446e-07, -0.380223751, 1.12297109e-07, 0.924894512)
+                    if (CFrame.new(-5539.3115234375, 313.800537109375, -2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if _G.CastleRaid and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                                if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000 then
+                                    repeat wait(_G.Fast_Delay)
+                                        AttackNoCoolDown()
+                                        AutoHaki()
+                                        EquipTool(SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                    until v.Humanoid.Health <= 0 or not v.Parent or not _G.CastleRaid
+                                end
+                            end
+                        end
+                    else
+                        toTarget(CFrameCastleRaid)
+                     
+                      
+                    end
+                end)
+            end
+        end
+        end)
 
 if Third_Sea then
-    local ToggleHallow = Tabs.Main:AddToggle("ToggleHallow", {Title = "Cày Lưỡi Hái Bóng Tối ( Từ A - Z )",Description = "", Default = false })
+    local ToggleHallow = Tabs.Concac:AddToggle("ToggleHallow", {Title = "Cày Lưỡi Hái Bóng Tối ( Từ A - Z )",Description = "", Default = false })
 
     ToggleHallow:OnChanged(function(Value)
         AutoHallowSycthe = Value
@@ -4188,7 +4227,7 @@ if Third_Sea then
            end)
         
            
-           local ToggleYama = Tabs.Main:AddToggle("ToggleYama", {Title = "Lấy kiếm Yama",Description = "", Default = false })
+           local ToggleYama = Tabs.Concac:AddToggle("ToggleYama", {Title = "Lấy kiếm Yama",Description = "", Default = false })
            ToggleYama:OnChanged(function(Value)
             _G.AutoYama = Value
            end)
@@ -4206,7 +4245,7 @@ if Third_Sea then
         end)
 
 
-        local ToggleTushita = Tabs.Main:AddToggle("ToggleTushita", {Title = "Lấy Tushita",Description = "", Default = false })
+        local ToggleTushita = Tabs.Concac:AddToggle("ToggleTushita", {Title = "Lấy Tushita",Description = "", Default = false })
         ToggleTushita:OnChanged(function(Value)
             AutoTushita = Value
         end)
@@ -4243,7 +4282,7 @@ if Third_Sea then
                    end)
 
 
-                   local ToggleHoly = Tabs.Main:AddToggle("ToggleHoly", {Title = "Thắp Sáng Đuốc Lấy Tushita",Description = "", Default = false })
+                   local ToggleHoly = Tabs.Concac:AddToggle("ToggleHoly", {Title = "Thắp Sáng Đuốc Lấy Tushita",Description = "", Default = false })
                    ToggleHoly:OnChanged(function(Value)
                     _G.Auto_Holy_Torch = Value
                    end)
@@ -4271,7 +4310,7 @@ if Third_Sea then
 
 
 if Second_Sea then
-        local ToggleFactory = Tabs.Main:AddToggle("ToggleFactory", {Title = "Đánh Nhà Máy",Description = "", Default = false })
+        local ToggleFactory = Tabs.Concac:AddToggle("ToggleFactory", {Title = "Đánh Nhà Máy",Description = "", Default = false })
         ToggleFactory:OnChanged(function(Value)
             _G.Factory = Value
         end)
@@ -4315,7 +4354,7 @@ if Second_Sea then
     end
 
         if Third_Sea then
-    local ToggleCakeV2 = Tabs.Main:AddToggle("ToggleCakeV2", {Title = "Giết Katakuri V2 (Cần Triệu Hồi)",Description = "", Default = false })
+    local ToggleCakeV2 = Tabs.Concac:AddToggle("ToggleCakeV2", {Title = "Giết Katakuri V2 (Cần Triệu Hồi)",Description = "", Default = false })
     ToggleCakeV2:OnChanged(function(Value)
         _G.AutoCakeV2 = Value
     end)
@@ -4360,7 +4399,7 @@ end
 
     
 if Second_Sea or Third_Sea then
-    local ToggleHakiColor = Tabs.Main:AddToggle("ToggleHakiColor", {Title = "Mua Haki Màu",Description = "",Default = false })
+    local ToggleHakiColor = Tabs.Concac:AddToggle("ToggleHakiColor", {Title = "Mua Haki Màu",Description = "",Default = false })
     ToggleHakiColor:OnChanged(function(Value)
         _G.Auto_Buy_Enchancement = Value
     end)
@@ -4379,7 +4418,7 @@ if Second_Sea or Third_Sea then
 end
 
 if Second_Sea then
-    local ToggleSwordLengend = Tabs.Main:AddToggle("ToggleSwordLengend", {Title = "Mua Kiếm Huyền Thoại",Description = "",Default = false })
+    local ToggleSwordLengend = Tabs.Concac:AddToggle("ToggleSwordLengend", {Title = "Mua Kiếm Huyền Thoại",Description = "",Default = false })
     ToggleSwordLengend:OnChanged(function(Value)
         _G.BuyLengendSword = Value
     end)
@@ -4406,7 +4445,7 @@ if Second_Sea then
 
 
 if Second_Sea then
-    local ToggleEvoRace = Tabs.Main:AddToggle("ToggleEvoRace", {Title = "Thức Tỉnh Tộc V2",Description = "",Default = false })
+    local ToggleEvoRace = Tabs.Concac:AddToggle("ToggleEvoRace", {Title = "Thức Tỉnh Tộc V2",Description = "",Default = false })
     ToggleEvoRace:OnChanged(function(Value)
         _G.AutoEvoRace = Value
     end)
