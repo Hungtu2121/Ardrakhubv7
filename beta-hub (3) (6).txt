@@ -4151,9 +4151,10 @@ end
 
 local Items = Tabs.Concac:AddSection("Tab Item")
 
+if Third_Sea then
 local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
-        Title = "Đánh Hải cặc",
-        Description = "", 
+        Title = "Farm Pirates",
+        Description = "Đánh hải tặc", 
         Default = false })
     ToggleCastleRaid:OnChanged(function(Value)
         _G.CastleRaid = Value
@@ -4189,7 +4190,7 @@ local ToggleCastleRaid = Tabs.Concac:AddToggle("ToggleCastleRaid", {
         end
         end)
 
-if Third_Sea then
+
     local ToggleHallow = Tabs.Concac:AddToggle("ToggleHallow", {Title = "Cày Lưỡi Hái Bóng Tối ( Từ A - Z )",Description = "", Default = false })
 
     ToggleHallow:OnChanged(function(Value)
